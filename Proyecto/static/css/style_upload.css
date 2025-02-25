@@ -1,0 +1,200 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4; /* Color de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Ancho más grande */
+    max-width: 1200px; /* Ancho máximo */
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2rem; /* Tamaño del título */
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 15px; /* Espacio debajo del input */
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.9rem; /* Tamaño de fuente reducido */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: #32be8f; /* Cambia el color del borde al enfocar */
+    box-shadow: 0 0 8px rgba(50, 190, 143, 0.3); /* Sombra verde al enfocar */
+    outline: none;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    background-image: linear-gradient(to right, #32be8f,#fdaa4a, #c6ec4e, #32be8f);
+    background-size: 200%;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background-position 0.5s;
+    margin-bottom: 10px; /* Espacio entre los botones */
+}
+
+button:hover {
+    background-position: right; /* Efecto hover para el botón */
+}
+
+h2 {
+    margin-top: 20px;
+    color: #333;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Desplazamiento horizontal */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Elimina el espacio entre bordes */
+    min-width: 800px; /* Ancho mínimo para evitar que se comprima demasiado */
+}
+
+th, td {
+    padding: 15px; /* Aumentar el alto de las celdas */
+    text-align: left;
+    border: 1px solid #ccc; /* Borde de las celdas */
+    font-size: 0.9rem; /* Tamaño de fuente reducido */
+}
+
+th {
+    background-color: #32be8f; /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+tr:hover {
+    background-color: #e0e0e0; /* Color de fondo al pasar el mouse */
+}
+
+/* Estilos para la paginación */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: 1px solid #32be8f;
+    border-radius: 5px;
+    color: #32be8f;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #32be8f;
+    color: white;
+}
+
+.pagination span {
+    margin: 0 10px;
+    font-size: 0.9rem;
+}
+/* Estilo para los campos de entrada específicos */
+.input-small {
+    width: 150px; /* Ajusta el ancho según sea necesario */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.9rem; /* Tamaño de fuente reducido */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 15px; /* Espacio debajo del input */
+}
+/* Estilos adicionales para el reporte */
+.container img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+/* Estilos para el modal */
+.modal {
+    display: none; /* Asegúrate de que esté oculto por defecto */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo más oscuro */
+}
+
+.modal-content {
+    background-color: #ffffff; /* Color de fondo blanco */
+    margin: 10% auto; /* Espaciado superior */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    border: 1px solid #888;
+    width: 60%; /* Ancho del modal */
+    max-width: 500px; /* Ancho máximo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    opacity: 0; /* Comienza invisible */
+    transform: translateY(-20px); /* Comienza desplazado hacia arriba */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+.modal.show .modal-content {
+    opacity: 1; /* Se vuelve visible */
+    transform: translateY(0); /* Se mueve a su posición original */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #ff0000; /* Cambia el color al pasar el mouse */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#errorMessage {
+    color: #333; /* Color del texto del mensaje */
+    font-size: 16px; /* Tamaño de fuente */
+    margin-top: 10px; /* Espaciado superior */
+}

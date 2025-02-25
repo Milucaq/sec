@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style_upload.css">
+    <title>Subir Archivo Excel</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Subir Archivo Excel</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".xlsx" required>
+            <button type="submit">Cargar en la Página</button>
+        </form>
+        <!-- Botón para regresar a la página de inicio -->
+        <form action="{{ url_for('home_page') }}" method="get" style="display:inline;">
+            <button type="submit">Regresar a Inicio</button>
+        </form>
+        {% if table %}
+            <h2>Contenido del Archivo:</h2>
+            <form method="POST" action="/filter">
+                <label for="cod_paquete">CodPaquete:</label>
+                <input type="text" name="cod_paquete" id="cod_paquete" class="input-small" placeholder="SVBF00000173685">
+                <label for="cod_manifiesto">CodManifiesto:</label>
+                <input type="text" name="cod_manifiesto" id="cod_manifiesto" class="input-small" placeholder="045-92196871">
+                <label for="fecha_inicio">Fecha Inicio:</label>
+                <input type="date" name="fecha_inicio" id="fecha_inicio" class="input-small">
+                <label for="fecha_fin">Fecha Fin:</label>
+                <input type="date" name="fecha_fin" id="fecha_fin" class="input-small">
+
+                <button type="submit">Filtrar</button>
+            </form>
+            <form method="POST" action="/reset" style="display: inline;">
+                <button type="submit">Restablecer Filtros</button>
+            </form>
+            <form method="POST" action="/generate_report" style="display: inline;">
+                <button type="submit">Generar Reporte</button>
+            </form>
+            <div class="table-container">
+                {{ table | safe }}
+            </div>
+
+            <!-- Controles de paginación -->
+            <div class="pagination">
+                {% if page > 1 %}
+                    <a href="{{ url_for('upload_file', page=page-1) }}">« Anterior</a>
+                {% endif %}
+                <span>Página {{ page }} de {{ total_pages }}</span>
+                {% if page < total_pages %}
+                    <a href="{{ url_for('upload_file', page=page+1) }}">Siguiente »</a>
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if error_message %}
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    showModal("{{ error_message }}");
+                });
+            </script>
+        {% endif %}
+    </div>
+    <!-- Modal para mostrar mensajes de error -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+    <script src="/static/js/upload.js"></script> <!-- Vincula el nuevo archivo JS -->
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Empleado</title>
+    <link rel="stylesheet" href="/static/css/style_add_employee.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script> <!-- Font Awesome para iconos -->
+</head>
+<body>
+    <div class="container">
+        <h1>Agregar Empleado</h1>
+        <form method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" required>
+            
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" required>
+            
+            <label for="rol">Rol:</label>
+            <select name="rol" required>
+                <option value="administrador">Administrador</option>
+                <option value="usuario">Usuario</option>
+            </select>
+            
+            <label for="usuarioId">Seleccionar Usuario:</label>
+            <select name="usuarioId" required>
+                <option value="">Seleccione un usuario</option>
+                {% for user in users %}
+                    <option value="{{ user[0] }}">{{ user[1] }}</option>  <!-- user[0] es el usuarioId, user[1] es el nombre -->
+                {% endfor %}
+            </select>
+            
+            <button type="submit">Agregar Empleado</button>
+        </form>
+
+        {% if error %}
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    showModal("{{ error }}");
+                });
+            </script>
+        {% endif %}
+        
+        <!-- Botón para regresar a la página de inicio -->
+        <form action="{{ url_for('home_page') }}" method="get" style="display:inline;">
+            <button type="submit">Regresar a Inicio</button>
+        </form>
+        
+        <button><a href="{{ url_for('employees') }}">Ver Empleados</a></button>
+    </div>
+
+    <!-- Modal para mostrar mensajes de error -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <!-- Modal adicional (puedes personalizarlo según tus necesidades) -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="infoMessage">Este es un mensaje informativo.</p>
+        </div>
+    </div>
+
+    <script src="/static/js/add_employee.js"></script> <!-- Vincula el nuevo archivo JS -->
+</body>
+</html>

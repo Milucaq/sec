@@ -1,0 +1,129 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4; /* Color de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2rem; /* Tamaño del título */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 1rem;
+    color: #555;
+    text-align: left;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #32be8f;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background-image: linear-gradient(to right, #32be8f,#fdaa4a, #c6ec4e, #32be8f);
+    background-size: 200%;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background-position 0.5s;
+    margin-bottom: 10px; /* Espacio entre los botones */
+}
+
+button:hover {
+    background-position: right; /* Efecto hover para el botón */
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+.modal {
+    display: none; /* Asegúrate de que esté oculto por defecto */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo más oscuro */
+}
+
+.modal-content {
+    background-color: #ffffff; /* Color de fondo blanco */
+    margin: 10% auto; /* Espaciado superior */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    border: 1px solid #888;
+    width: 60%; /* Ancho del modal */
+    max-width: 500px; /* Ancho máximo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    opacity: 0; /* Comienza invisible */
+    transform: translateY(-20px); /* Comienza desplazado hacia arriba */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+.modal.show .modal-content {
+    opacity: 1; /* Se vuelve visible */
+    transform: translateY(0); /* Se mueve a su posición original */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #ff0000; /* Cambia el color al pasar el mouse */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#errorMessage {
+    color: #333; /* Color del texto del mensaje */
+    font-size: 16px; /* Tamaño de fuente */
+    margin-top: 10px; /* Espaciado superior */
+}

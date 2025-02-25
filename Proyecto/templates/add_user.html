@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+    <link rel="stylesheet" href="/static/css/style_add_user.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script> <!-- Font Awesome para iconos -->
+</head>
+<body>
+    <div class="container">
+        <h1>Add User</h1>
+        <form action="{{ url_for('add_user') }}" method="post">
+            <div class="input-div">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="div">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" class="input" required>
+                </div>
+            </div>
+            <div class="input-div">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="input" required>
+                </div>
+                <ul>
+                    <li id="length" class="requirement">Al menos 8 caracteres</li>
+                    <li id="uppercase" class="requirement">Al menos una letra mayúscula</li>
+                    <li id="lowercase" class="requirement">Al menos una letra minúscula</li>
+                    <li id="number" class="requirement">Al menos un número</li>
+                    <li id="special" class="requirement">Al menos un carácter especial</li>
+                </ul>
+            </div>
+            <button type="submit">Add User</button>
+        </form>
+        <!-- Botón para regresar a la página de inicio -->
+        <form action="{{ url_for('home_page') }}" method="get" style="display:inline;">
+            <button type="submit">Regresar a Inicio</button>
+        </form>
+        
+        <button><a href="{{ url_for('users') }}">View Users</a></button>
+    </div>
+
+    <!-- Modal para mostrar mensajes de error -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <script src="/static/js/add_use.js"></script> <!-- Vincula el nuevo archivo JS -->
+
+    {% if error %}
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                showModal("{{ error }}");
+            });
+        </script>
+    {% endif %}
+</body>
+</html>

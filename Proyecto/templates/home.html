@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="/static/css/style_home.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido, {{ session['user'] }}</h1>
+        
+        {% if session['rol'] != 'usuario' %}
+            <a href="{{ url_for('add_user') }}"><button class="btn">Agregar Usuario</button></a>
+            <a href="{{ url_for('add_employee') }}"><button class="btn">Agregar Empleado</button></a>
+        {% endif %}
+        
+        <a href="{{ url_for('upload_file') }}">
+            <button class="btn">Cargar Excel</button>
+        </a>
+        
+        <a href="{{ url_for('logout') }}"><button class="btn">Cerrar Sesión</button></a>
+    </div>
+</body>
+</html>

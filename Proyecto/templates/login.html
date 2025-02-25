@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form Responsive</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <!-- mycss -->
+    <link rel="stylesheet" href="/static/css/style_login.css">
+</head>
+<body>
+    <img src="/static/img/wave.png" class="wave" alt="">
+    <div class="container">
+        <div class="img">
+            <img src="/static/img/14767589_5532842-removebg-preview.png" alt="">
+        </div>
+
+        <!-- Login Content -->
+        <div class="login-content">
+            <form action="/login" method="POST">
+                <img src="/static/img/3301602.jpg" alt="">
+                <h2 class="title">Bienvenido</h2>
+
+                <!-- Input Username -->
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Nombre de usuario</h5>
+                        <input type="email" class="input" name="username" required>
+                    </div>
+                </div>
+                <!-- End Input Username -->
+
+                <!-- Input Password -->
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Contraseña</h5>
+                        <input type="password" class="input" name="password" required>
+                    </div>
+                </div>
+                 <!-- reCAPTCHA -->
+                <div class="g-recaptcha" data-sitekey="{{ config['RECAPTCHA_PUBLIC_KEY'] }}"></div>
+                <input type="submit" class="btn" value="Iniciar Sesión">
+                
+            </form>
+            {% if error_message %}
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        showModal("{{ error_message }}");
+                    });
+                </script>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Modal para mostrar mensajes de error -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script type="text/javascript" src="/static/js/login.js"></script>
+</body>
+</html>

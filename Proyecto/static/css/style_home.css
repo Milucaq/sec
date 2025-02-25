@@ -1,0 +1,63 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #38d39f; /* Color de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.btn {
+    display: block;
+    width: 100%; /* Botón ocupa el 100% del ancho del contenedor */
+    height: 50px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #32be8f,#fdaa4a, #c6ec4e, #32be8f);
+    background-size: 200%;
+    background-position: left; /* Posición inicial del degradado */
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: background-position 0.5s; /* Transición suave para el efecto hover */
+}
+
+.btn:hover {
+    background-position: right; /* Cambia la posición del fondo al pasar el mouse */
+}
+
+/* Responsividad */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .btn {
+        width: 100%; /* Botones ocupan el 100% del ancho en pantallas pequeñas */
+    }
+}

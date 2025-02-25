@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employees</title>
+    <link rel="stylesheet" href="/static/css/style_employees.css">
+</head>
+<body>
+    <div class="container">
+    <h1>Employees</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Apellido</th>
+            <th>Rol</th>
+            <th>Usuario</th>
+            <th></th>
+            <!-- Agrega más columnas según los campos de tu tabla de empleados -->
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee[1] }}</td> <!-- Ajusta el índice según tu tabla -->
+            <td>{{ employee[2] }}</td> <!-- Ajusta el índice según tu tabla -->
+            <td>{{ employee[3] }}</td> <!-- Ajusta el índice según tu tabla -->
+            <td>{{ employee[4] }}</td>
+            <td>
+                <form action="{{ url_for('delete_employee', employee_id=employee[0]) }}" method="post" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este empleado?');">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </td>
+            <!-- Agrega más celdas según los campos de tu tabla -->
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <form action="{{ url_for('add_employee') }}" method="get" style="display:inline;">
+        <button type="submit">Regresar</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style_upload.css">
+    <title>Reporte Profesional</title>
+    <style>
+        .graph-container {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .graph-container h2 {
+            text-align: center;
+            color: #333;
+        }
+        .graph-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            background-color: #32be8f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button-container button:hover {
+            background-color: #2aa876;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reporte Profesional</h1>
+
+        <!-- Gráfico 1: Circular -->
+        <div class="graph-container">
+            <h2>Distribución de Estados Actuales</h2>
+            {{ graph1 | safe }}
+        </div>
+
+        <!-- Gráfico 2: Barras -->
+        <div class="graph-container">
+            <h2>Estados de Aduana</h2>
+            {{ graph2 | safe }}
+        </div>
+
+        <!-- Gráfico 3: Líneas -->
+        <div class="graph-container">
+            <h2>Paquetes por Fecha</h2>
+            {{ graph3 | safe }}
+        </div>
+
+        <!-- Gráfico 4: Dispersión -->
+        <div class="graph-container">
+            <h2>Relación entre RUC y Celular</h2>
+            {{ graph4 | safe }}
+        </div>
+
+        <!-- Botón para regresar -->
+        <div class="button-container">
+            <form action="{{ url_for('upload_file') }}" method="get">
+                <button type="submit">Regresar a la Tabla</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
